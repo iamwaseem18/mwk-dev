@@ -210,6 +210,9 @@ footer a:hover{color:var(--amber)}
         <tr><td class="svc">observability</td><td class="via">signoz · otel</td><td><span class="st"><i></i>ingesting</span></td><td class="meta">4 src</td></tr>
         <tr><td class="svc">volcarian.com</td><td class="via">astro · cf workers</td><td><span class="st"><i></i>healthy</span></td><td class="meta">11 pages</td></tr>
         <tr><td class="svc">weown.health</td><td class="via">docker · caddy</td><td><span class="st"><i></i>healthy</span></td><td class="meta">buildathon</td></tr>
+        <tr><td class="svc">weown.events</td><td class="via">doks · traefik</td><td><span class="st"><i></i>healthy</span></td><td class="meta">k8s cluster</td></tr>
+        <tr><td class="svc">registry.weown.tools</td><td class="via">harbor</td><td><span class="st"><i></i>healthy</span></td><td class="meta">6 images</td></tr>
+        <tr><td class="svc">outreach.mwk.dev</td><td class="via">cf pages</td><td><span class="st"><i></i>healthy</span></td><td class="meta">extension</td></tr>
         <tr><td class="svc">mwk.dev</td><td class="via">cloudflare pages</td><td><span class="st deploying" id="self-status"><i></i>deploying</span></td><td class="meta">this page</td></tr>
       </tbody></table>
       <div class="log" id="log" aria-live="polite">
@@ -273,15 +276,6 @@ footer a:hover{color:var(--amber)}
         </div>
       </article>
       <article class="case">
-        <div class="ctx"><b>Side project</b>Personal · 2026<br>Next.js · Vercel</div>
-        <div>
-          <h3>LinkedIn cold-message generator</h3>
-          <p>A Next.js app that turns a job description and a profile into a short outreach message. Built for my own job search, kept online because friends kept asking for the link.</p>
-          <a class="more" href="https://linkedin-cold-message-generator.vercel.app" target="_blank" rel="noopener">Try it live</a>
-          <div class="tags"><span class="tag">Next.js</span><span class="tag">LLM API</span><span class="tag">Vercel</span></div>
-        </div>
-      </article>
-      <article class="case">
         <div class="ctx"><b>volcarian.com</b>2026<br>Astro · Cloudflare Workers</div>
         <div>
           <h3>Full agency site on Cloudflare Workers — no server, no bill</h3>
@@ -309,6 +303,56 @@ footer a:hover{color:var(--amber)}
           <div class="tags"><span class="tag">Docker</span><span class="tag">Caddy</span><span class="tag">DNS</span><span class="tag">DigitalOcean</span><span class="tag">Migration</span><span class="tag">Zero Downtime</span></div>
         </div>
       </article>
+      <article class="case">
+        <div class="ctx"><b>OpenBao Secrets Automation</b>bao.weown.tools · 2026<br>OpenBao · Bash · OpenRouter API</div>
+        <div>
+          <h3>Automating API key rotation with an open-source Vault fork</h3>
+          <p><strong>Problem.</strong> API keys were rotated manually every time they expired — the CEO was doing it himself. No audit trail, no automation, no scoped access.</p>
+          <p><strong>Built.</strong> <code>provision-openrouter-key.sh</code> — a Bash script that provisions budget-capped API keys via the OpenRouter API and stores them in OpenBao (open-source HashiCorp Vault fork). Supports manual paste and fully automated modes with configurable credit limits. Tested against production tenants with rollback verification. Integrated into the existing deployment pipeline with a per-instance <code>SECRET_BACKEND</code> flag flip — no script rewrite needed to migrate a tenant from Infisical to OpenBao.</p>
+          <p class="sub">Key rotation went from a manual CEO task to a single command with audit logging.</p>
+          <div class="tags"><span class="tag">OpenBao</span><span class="tag">Vault</span><span class="tag">Bash</span><span class="tag">Secrets Management</span><span class="tag">OpenRouter API</span><span class="tag">Key Rotation</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="ctx"><b>Kubernetes Cluster Build</b>WeOwn Cloud · 2026<br>DOKS · Traefik · Harbor · cert-manager</div>
+        <div>
+          <h3>Building the first production Kubernetes cluster from scratch</h3>
+          <p><strong>Problem.</strong> All workloads ran on individual droplets with no orchestration, no shared ingress, and no centralized container registry.</p>
+          <p><strong>Built.</strong> Provisioned a v5 DOKS cluster on DigitalOcean (ATL1), deployed Traefik as the ingress controller with cert-manager and Let's Encrypt for automatic TLS. Set up Harbor container registry at registry.weown.tools, migrated all images from DOCR. Currently deploying WordPress, Buzz multi-agent platform (Postgres, Redis, MinIO), and internal services. Namespace isolation, IngressRoutes, and DNS wired end to end.</p>
+          <p class="sub">First workload (weown.events) is live on the cluster. Buzz relay deployment in progress.</p>
+          <div class="tags"><span class="tag">Kubernetes</span><span class="tag">DOKS</span><span class="tag">Traefik</span><span class="tag">cert-manager</span><span class="tag">Harbor</span><span class="tag">DigitalOcean</span><span class="tag">Helm</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="ctx"><b>WordPress V5 Migration</b>WeOwn · 2026<br>OpenTofu · Bash · Caddy · UpdraftPlus</div>
+        <div>
+          <h3>Migrating 6 WordPress sites with a reusable IaC pipeline</h3>
+          <p><strong>Problem.</strong> Six WordPress sites ran on legacy infrastructure with no automation, no version pinning, and no documented migration path.</p>
+          <p><strong>Built.</strong> A config-driven migration system — <code>wordpress-v5-migrate.sh</code> reads a YAML config, provisions v5 droplets via OpenTofu, sets up Docker + Caddy for automatic TLS, restores content via UpdraftPlus, runs wp-cli search-replace for URL migration, and documents before/after baselines. Remote Terraform state on DigitalOcean Spaces with locking. Migrated burnedout.xyz, weown.academy, weown.bio, and burnedoutadvisor.com with zero data loss.</p>
+          <p class="sub">What used to be a manual weekend project per site now runs from a single YAML file.</p>
+          <div class="tags"><span class="tag">OpenTofu</span><span class="tag">Terraform</span><span class="tag">Bash</span><span class="tag">Docker</span><span class="tag">Caddy</span><span class="tag">WordPress</span><span class="tag">UpdraftPlus</span><span class="tag">IaC</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="ctx"><b>Container Registry Migration</b>WeOwn · 2026<br>Python · Docker · Harbor · DOCR</div>
+        <div>
+          <h3>Migrating a container registry before the lights go out</h3>
+          <p><strong>Problem.</strong> The team's container registry (reg.mini.dev) announced shutdown with a hard deadline. 46 deployments across 3 accounts referenced images that would stop pulling in two weeks.</p>
+          <p><strong>Built.</strong> Audited all 46 deployments, identified 7 unique images to mirror, and built <code>registry-rollover.py</code> — a Python script that re-tags and pushes images to DOCR and Harbor, updates deployment configs, and validates the rollover. Handled edge cases: 3 stale image tags that no longer existed, a private rescued image archive, and one blocked image (vendor rebrand). PR merged with tombstone markers for decommissioned references.</p>
+          <p class="sub">12 of 13 live deployments rolled over mechanically. Zero downtime.</p>
+          <div class="tags"><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Harbor</span><span class="tag">DOCR</span><span class="tag">Container Registry</span><span class="tag">Migration</span></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="ctx"><b>LinkedIn Outreach Extension</b>outreach.mwk.dev · 2026<br>Chrome Extension · Claude API · Next.js</div>
+        <div>
+          <h3>A Chrome extension that writes and sends LinkedIn messages for you</h3>
+          <p><strong>Problem.</strong> Cold outreach on LinkedIn is slow — find the person, write a personalized message, send, track, repeat. At scale it's hours of copy-paste.</p>
+          <p><strong>Built.</strong> A Chrome extension (Side Panel API) that scrapes LinkedIn contacts by company, drafts personalized notes via Claude or Grok APIs, and, once you've reviewed them, sends connection requests with the notes — all from a side panel while browsing. Landing page with animated demo at outreach.mwk.dev. Started as a simple Next.js generator, evolved into a full product.</p>
+          <a class="more" href="https://outreach.mwk.dev" target="_blank" rel="noopener">Try it at outreach.mwk.dev</a>
+          <div class="tags"><span class="tag">Chrome Extension</span><span class="tag">Claude API</span><span class="tag">Next.js</span><span class="tag">LLM</span><span class="tag">LinkedIn</span><span class="tag">Automation</span></div>
+        </div>
+      </article>
     </div>
   </section>
   <section id="writing">
@@ -330,13 +374,14 @@ footer a:hover{color:var(--amber)}
       <p class="sec-sub">Not a keyword list.</p>
     </div>
     <dl class="skills rv">
-      <dt>cloud</dt><dd>Kubernetes (DOKS), Docker, DigitalOcean, AWS, Cloudflare Workers &amp; Pages, Terraform / OpenTofu, Ansible</dd>
-      <dt>delivery</dt><dd>GitHub Actions, Helm, ArgoCD, GitOps, Copier templates, Wrangler</dd>
+      <dt>cloud</dt><dd>Kubernetes (DOKS), Docker, DigitalOcean, AWS, Cloudflare Workers &amp; Pages, Terraform / OpenTofu, Ansible, Harbor</dd>
+      <dt>delivery</dt><dd>GitHub Actions, Helm, ArgoCD, GitOps, Copier templates, Wrangler, Traefik, cert-manager</dd>
       <dt>observability</dt><dd>Prometheus, Grafana, Loki, SigNoz, OpenTelemetry, Uptime Kuma</dd>
-      <dt>security</dt><dd>Caddy, Ingress, DNS, TLS/mTLS, IAM &amp; RBAC, Infisical, CCNA</dd>
+      <dt>security</dt><dd>Caddy, Ingress, DNS, TLS/mTLS, IAM &amp; RBAC, Infisical, CCNA, OpenBao, Vault, Secrets Rotation, Key Provisioning</dd>
       <dt>ai infra</dt><dd>AnythingLLM, MCP gateways, self-hosted LLM agents, RAG pipelines, EmDash CMS, Astro</dd>
       <dt>web3 / blockchain</dt><dd>Midnight Network, Zero-Knowledge Proofs, Cardano</dd>
-      <dt>languages</dt><dd>Python, Bash, SQL, TypeScript</dd>
+      <dt>languages</dt><dd>Python, Bash, SQL, TypeScript, Golang (familiar)</dd>
+      <dt>migration &amp; tooling</dt><dd>registry-rollover.py, wordpress-v5-migrate.sh, provision-openrouter-key.sh, UpdraftPlus, wp-cli</dd>
     </dl>
   </section>
   <section id="about">
