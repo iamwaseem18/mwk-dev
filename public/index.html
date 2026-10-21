@@ -237,6 +237,7 @@ footer a:hover{color:var(--amber)}
           <p><strong>Problem.</strong> Every release was a manual wrangler run with an undocumented config workaround. "Deployed" and "live" kept disagreeing because content lived in D1 revisions, not the seed file.</p>
           <p><strong>Built.</strong> A GitHub Actions pipeline that builds the Astro site, patches the adapter's broken config, and deploys to Workers on every merge. Migrated the zone between Cloudflare accounts, added DKIM/DMARC email, wrote the runbook.</p>
           <p class="sub">Merge to main → live in one minute. Nobody needs my laptop to ship.</p>
+          <a class="more" href="https://github.com/iamwaseem18/f1visa-pipeline" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">GitHub Actions</span><span class="tag">Cloudflare Workers</span><span class="tag">D1</span><span class="tag">Astro</span><span class="tag">DNS</span></div>
         </div>
       </article>
@@ -246,6 +247,7 @@ footer a:hover{color:var(--amber)}
           <h3>A Kubernetes platform a small team can actually operate</h3>
           <p><strong>Built.</strong> DigitalOcean Kubernetes provisioned with OpenTofu, apps delivered through Helm and ArgoCD, secrets in Infisical, and a Prometheus + Grafana + Loki stack so failures show up on a dashboard before Slack.</p>
           <p class="sub">The team deploys by opening a PR. Access, secrets, and rollbacks follow the same path.</p>
+          <a class="more" href="https://github.com/iamwaseem18/gitops-platform" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">OpenTofu</span><span class="tag">Helm</span><span class="tag">ArgoCD</span><span class="tag">Infisical</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Loki</span></div>
         </div>
       </article>
@@ -264,6 +266,7 @@ footer a:hover{color:var(--amber)}
         <div>
           <h3>Reusable Docker stacks for AI and WordPress</h3>
           <p><strong>Built.</strong> HTTP healthchecks and pinned images for OpenClaw, default model + agent search for AnythingLLM, and a WordPress stack where Ansible pulls plugins from object storage at build time. Ran a Docker MCP Gateway POC for safe agent tool access.</p>
+          <a class="more" href="https://github.com/iamwaseem18/container-stacks" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">Docker Compose</span><span class="tag">Ansible</span><span class="tag">MCP</span><span class="tag">AnythingLLM</span></div>
         </div>
       </article>
@@ -272,6 +275,7 @@ footer a:hover{color:var(--amber)}
         <div>
           <h3>Seeing traffic and errors on a site that had neither</h3>
           <p><strong>Built.</strong> SigNoz with OpenTelemetry collectors and structured Caddy access logs for a marketing site with live webinar traffic. Slow pages and 5xx spikes now visible in one place.</p>
+          <a class="more" href="https://github.com/iamwaseem18/observability-stack" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">SigNoz</span><span class="tag">OpenTelemetry</span><span class="tag">Caddy</span></div>
         </div>
       </article>
@@ -281,6 +285,7 @@ footer a:hover{color:var(--amber)}
           <h3>Full agency site on Cloudflare Workers — no server, no bill</h3>
           <p><strong>Problem.</strong> A client needed their React SPA rebuilt as a fast, SEO-friendly site on infrastructure they controlled, without a monthly hosting bill.</p>
           <p><strong>Built.</strong> 11-page Astro site deployed to Cloudflare Workers with D1 database, KV storage, and EmDash CMS. Dark theme rebuilt as a 1:1 replica of the original. Contact form wired to Formsubmit. DNS, Workers routes, and admin panel all configured on the client's own Cloudflare account.</p>
+          <a class="more" href="https://github.com/iamwaseem18/volcarian-astro" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">Astro</span><span class="tag">Cloudflare Workers</span><span class="tag">D1</span><span class="tag">KV</span><span class="tag">EmDash</span><span class="tag">DNS</span></div>
         </div>
       </article>
@@ -291,6 +296,7 @@ footer a:hover{color:var(--amber)}
           <p><strong>Problem.</strong> A team needed production infrastructure for a Midnight Network hackathon project — a Health Markers Passport using zero-knowledge proofs — with a hard submission deadline.</p>
           <p><strong>Built.</strong> Provisioned a DigitalOcean droplet, containerized the Node.js/Express backend and Next.js 14 frontend with Docker, set up Caddy for TLS and API routing, configured DNS, and deployed the full stack. Live demo verified end-to-end: wallet connect, credential issuance, consent, proof generation.</p>
           <a class="more" href="https://weown.health" target="_blank" rel="noopener">Live at weown.health</a>
+          <a class="more" href="https://github.com/iamwaseem18/weownhealth-infra" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">Docker</span><span class="tag">Caddy</span><span class="tag">Next.js</span><span class="tag">Node.js</span><span class="tag">DigitalOcean</span><span class="tag">Zero-Knowledge Proofs</span></div>
         </div>
       </article>
@@ -300,6 +306,7 @@ footer a:hover{color:var(--amber)}
           <h3>Live AI agent migration across datacenters with zero downtime</h3>
           <p><strong>Problem.</strong> Cross-datacenter latency between an AI agent in NYC1 and its platform in ATL1 was degrading performance.</p>
           <p><strong>Built.</strong> Provisioned a new ATL1 droplet, migrated all three containers (agent, dashboard, reverse proxy), updated DNS in Cloudflare, verified TLS and auth, then destroyed the old NYC1 droplet and released the reserved IP. Zero downtime throughout.</p>
+          <a class="more" href="https://github.com/iamwaseem18/hermes-atl1-migration" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">Docker</span><span class="tag">Caddy</span><span class="tag">DNS</span><span class="tag">DigitalOcean</span><span class="tag">Migration</span><span class="tag">Zero Downtime</span></div>
         </div>
       </article>
@@ -310,6 +317,7 @@ footer a:hover{color:var(--amber)}
           <p><strong>Problem.</strong> API keys were rotated manually every time they expired — the CEO was doing it himself. No audit trail, no automation, no scoped access.</p>
           <p><strong>Built.</strong> <code>provision-openrouter-key.sh</code> — a Bash script that provisions budget-capped API keys via the OpenRouter API and stores them in OpenBao (open-source HashiCorp Vault fork). Supports manual paste and fully automated modes with configurable credit limits. Tested against production tenants with rollback verification. Integrated into the existing deployment pipeline with a per-instance <code>SECRET_BACKEND</code> flag flip — no script rewrite needed to migrate a tenant from Infisical to OpenBao.</p>
           <p class="sub">Key rotation went from a manual CEO task to a single command with audit logging.</p>
+          <a class="more" href="https://github.com/iamwaseem18/openbao-secrets" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">OpenBao</span><span class="tag">Vault</span><span class="tag">Bash</span><span class="tag">Secrets Management</span><span class="tag">OpenRouter API</span><span class="tag">Key Rotation</span></div>
         </div>
       </article>
@@ -320,6 +328,7 @@ footer a:hover{color:var(--amber)}
           <p><strong>Problem.</strong> All workloads ran on individual droplets with no orchestration, no shared ingress, and no centralized container registry.</p>
           <p><strong>Built.</strong> Provisioned a v5 DOKS cluster on DigitalOcean (ATL1), deployed Traefik as the ingress controller with cert-manager and Let's Encrypt for automatic TLS. Set up Harbor container registry at registry.weown.tools, migrated all images from DOCR. Currently deploying WordPress, Buzz multi-agent platform (Postgres, Redis, MinIO), and internal services. Namespace isolation, IngressRoutes, and DNS wired end to end.</p>
           <p class="sub">First workload (weown.events) is live on the cluster. Buzz relay deployment in progress.</p>
+          <a class="more" href="https://github.com/iamwaseem18/k8s-cluster-build" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">Kubernetes</span><span class="tag">DOKS</span><span class="tag">Traefik</span><span class="tag">cert-manager</span><span class="tag">Harbor</span><span class="tag">DigitalOcean</span><span class="tag">Helm</span></div>
         </div>
       </article>
@@ -330,6 +339,7 @@ footer a:hover{color:var(--amber)}
           <p><strong>Problem.</strong> Six WordPress sites ran on legacy infrastructure with no automation, no version pinning, and no documented migration path.</p>
           <p><strong>Built.</strong> A config-driven migration system — <code>wordpress-v5-migrate.sh</code> reads a YAML config, provisions v5 droplets via OpenTofu, sets up Docker + Caddy for automatic TLS, restores content via UpdraftPlus, runs wp-cli search-replace for URL migration, and documents before/after baselines. Remote Terraform state on DigitalOcean Spaces with locking. Migrated burnedout.xyz, weown.academy, weown.bio, and burnedoutadvisor.com with zero data loss.</p>
           <p class="sub">What used to be a manual weekend project per site now runs from a single YAML file.</p>
+          <a class="more" href="https://github.com/iamwaseem18/wordpress-v5-migration" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">OpenTofu</span><span class="tag">Terraform</span><span class="tag">Bash</span><span class="tag">Docker</span><span class="tag">Caddy</span><span class="tag">WordPress</span><span class="tag">UpdraftPlus</span><span class="tag">IaC</span></div>
         </div>
       </article>
@@ -340,6 +350,7 @@ footer a:hover{color:var(--amber)}
           <p><strong>Problem.</strong> The team's container registry (reg.mini.dev) announced shutdown with a hard deadline. 46 deployments across 3 accounts referenced images that would stop pulling in two weeks.</p>
           <p><strong>Built.</strong> Audited all 46 deployments, identified 7 unique images to mirror, and built <code>registry-rollover.py</code> — a Python script that re-tags and pushes images to DOCR and Harbor, updates deployment configs, and validates the rollover. Handled edge cases: 3 stale image tags that no longer existed, a private rescued image archive, and one blocked image (vendor rebrand). PR merged with tombstone markers for decommissioned references.</p>
           <p class="sub">12 of 13 live deployments rolled over mechanically. Zero downtime.</p>
+          <a class="more" href="https://github.com/iamwaseem18/registry-migration" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Harbor</span><span class="tag">DOCR</span><span class="tag">Container Registry</span><span class="tag">Migration</span></div>
         </div>
       </article>
@@ -350,6 +361,7 @@ footer a:hover{color:var(--amber)}
           <p><strong>Problem.</strong> Cold outreach on LinkedIn is slow — find the person, write a personalized message, send, track, repeat. At scale it's hours of copy-paste.</p>
           <p><strong>Built.</strong> A Chrome extension (Side Panel API) that scrapes LinkedIn contacts by company, drafts personalized notes via Claude or Grok APIs, and, once you've reviewed them, sends connection requests with the notes — all from a side panel while browsing. Landing page with animated demo at outreach.mwk.dev. Started as a simple Next.js generator, evolved into a full product.</p>
           <a class="more" href="https://outreach.mwk.dev" target="_blank" rel="noopener">Try it at outreach.mwk.dev</a>
+          <a class="more" href="https://github.com/iamwaseem18/linkedin-outreach-extension" target="_blank" rel="noopener">View on GitHub</a>
           <div class="tags"><span class="tag">Chrome Extension</span><span class="tag">Claude API</span><span class="tag">Next.js</span><span class="tag">LLM</span><span class="tag">LinkedIn</span><span class="tag">Automation</span></div>
         </div>
       </article>
